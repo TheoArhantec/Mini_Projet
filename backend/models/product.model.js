@@ -3,8 +3,8 @@ const Categories = require('./category.model.js')
 
 const ProductSchema = mongoose.Schema({
     name: String,
-    price: Number,
-    category: { type: mongoose.ObjectId, ref: Categories }
+    brand: String,
+    price: Number
 }, {
     timestamps: true
 });

@@ -8,10 +8,28 @@ exports.create = (req, res) => {
             message: "Category name can not be empty"
         });
     }
+    if(!req.body.color) {
+        return res.status(400).send({
+            message: "Category color can not be empty"
+        });
+    }
+    if(!req.body.logo) {
+        return res.status(400).send({
+            message: "Category logo can not be empty"
+        });
+    }
+    if(!req.body.version) {
+        return res.status(400).send({
+            message: "Category version can not be empty"
+        });
+    }
 
     // Create a Category
     const category = new Category({
-        name: req.body.name || "Unnamed Category"
+        name: req.body.name || "Unnamed Category",
+        color: req.body.color,
+        logo: req.body.logo,
+        version: req.body.version
     });
 
     // Save Category in the database
@@ -61,16 +79,34 @@ exports.findOne = (req, res) => {
 
 // Update a category identified by the categoryId in the request
 exports.update = (req, res) => {
-    // Validate Request
+    // Validate request
     if(!req.body.name) {
         return res.status(400).send({
-            message: "Category content can not be empty"
+            message: "Category name can not be empty"
+        });
+    }
+    if(!req.body.color) {
+        return res.status(400).send({
+            message: "Category color can not be empty"
+        });
+    }
+    if(!req.body.logo) {
+        return res.status(400).send({
+            message: "Category logo can not be empty"
+        });
+    }
+    if(!req.body.version) {
+        return res.status(400).send({
+            message: "Category version can not be empty"
         });
     }
 
     // Find category and update it with the request body
     Category.findByIdAndUpdate(req.params.categoryId, {
-        name: req.body.name || "Unnamed Category"
+        name: req.body.name || "Unnamed Category",
+        color: req.body.color,
+        logo: req.body.logo,
+        version: req.body.version
     }, {new: true})
     .then(category => {
         if(!category) {

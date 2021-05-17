@@ -3,15 +3,27 @@ const Product = require('../models/product.model.js');
 // Create and Save a new Product
 exports.create = (req, res) => {
     // Validate request
+    if(!req.body.name) {
+      return res.status(400).send({
+          message: "Product name can not be empty"
+      });
+  }
     if(!req.body.price) {
         return res.status(400).send({
             message: "Product price can not be empty"
         });
     }
+    
+    if(!req.body.brand) {
+      return res.status(400).send({
+          message: "Product brand can not be empty"
+      });
+    }
 
     // Create a Product
     const product = new Product({
-        name: req.body.name || "Unnamed Product", 
+        name: req.body.name || "Unnamed Product",
+        brand: req.body.brand,
         price: req.body.price
     });
 
@@ -63,15 +75,27 @@ exports.findOne = (req, res) => {
 // Update a product identified by the productId in the request
 exports.update = (req, res) => {
     // Validate Request
+    if(!req.body.name) {
+      return res.status(400).send({
+          message: "Product name can not be empty"
+      });
+  }
     if(!req.body.price) {
         return res.status(400).send({
             message: "Product price can not be empty"
         });
     }
+    
+    if(!req.body.brand) {
+      return res.status(400).send({
+          message: "Product brand can not be empty"
+      });
+    }
 
     // Find product and update it with the request body
     Product.findByIdAndUpdate(req.params.productId, {
         name: req.body.name || "Unnamed Product",
+        brand: req.body.brand,
         price: req.body.price
     }, {new: true})
     .then(product => {
