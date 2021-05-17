@@ -1,19 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Link,
+  Route,
+} from 'react-router-dom'
+import Products from '../Products/Products';
+import Categories from '../Categories/Categories';
 
-import style from './App.scss';
+import { PageHeader, Button } from 'antd'
 
-const App = ({ title }) => (
-  <h1 className={classNames(style.monTitre)}>{title}</h1>
-);
+const App = () =>  {
 
-App.propTypes = {
-  title: PropTypes.string,
-};
+  return (
+    <Router>
+      <PageHeader className="header" title="Magasin" extra={[
+        <Button key="3" type="link"><Link to={'/'}>Produits</Link></Button>,
+        <Button key="2" type="link" ><Link to={'categories'}>Categories</Link></Button>,
+      ]}/>
+      <Switch>
+        <Route exact path={'/'} component={Products} />
+        <Route exact path={'/categories'} component={Categories} />
+      </Switch>
+    </Router>
+)}
 
-App.defaultProps = {
-  title: 'Welcome',
-};
+
 
 export default App;
