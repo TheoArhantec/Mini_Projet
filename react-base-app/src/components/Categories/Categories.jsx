@@ -7,6 +7,7 @@ import {
   message
 } from 'antd';
 import style from './Categories.scss'
+import categoryService from '../../Services/Category'
 import CreateCategory from './CreateCategory';
 import UpdateCategory from './UpdateCategory';
 
@@ -15,23 +16,29 @@ const Categories = () => {
   const [ displayUpdateForm, setDisplayUpdateForm ] = useState(false);
   const [ displayCreateForm, setDisplayCreateForm ] = useState(false);
   const [ updatedCategory, setUpdatedCategory ] = useState({});
-
-  useEffect(() => { document.title = 'Categories' }, [])
-
-  const dataSource = [
-  {
+  const [categories, setCategories] = useState([{
     key: '1',
     id: 'Mike',
-    age: 32,
-    address: '10 Downing Street',
-  },
-  {
-    key: '2',
-    id: 'John',
-    age: 42,
-    address: '10 Downing Street',
-  },
-];
+    name: 'hello',
+    logo: '10 Downing Street',
+    version : 10
+  }])
+
+  useEffect(() => {
+    document.title = 'Categories'
+    categoryService.getAll().then(res => {
+      setCategories(res.map((category, key) => {
+        return {
+          key: key,
+          id: category._id,
+          name: category.name,
+          logo: 'todo',
+          version : 'todo'
+        }
+      }))
+    })
+  }, [])
+
 
   const columns = [
   {
@@ -40,15 +47,20 @@ const Categories = () => {
     key: 'id',
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
+    title: 'Logo',
+    dataIndex: 'logo',
+    key: 'logo',
   },
+    {
+      title : 'Version',
+      dataIndex: 'version',
+      key: 'version'
+    },
   {
     title: 'Action',
     dataIndex: '',
@@ -57,6 +69,8 @@ const Categories = () => {
 
       const deleteCategory = (e, id) => {
         console.log(id)
+        setCategories(categories.filter(category => category.id !== id));
+        categoryService.deleteItem(id);
         message.success('Catégorie effacée');
       }
       console.log(text, record)
@@ -84,7 +98,8 @@ const openUpdateForm = (record) => {
 }
 
 
-  const submitCategory = ({libelle}) => {
+  const submitCategory = (object) => {
+    console.log(object);
     message.success("Ajout d'une nouvelle catégorie")
     setDisplayCreateForm(false)
   }
@@ -96,7 +111,7 @@ const openUpdateForm = (record) => {
 
     return (
         <div className={style.categories_container} >
-            <Table dataSource={dataSource} columns={columns} footer={() => (
+            <Table dataSource={categories} columns={columns} footer={() => (
               <Button type={'primary'} onClick={() =>  setDisplayCreateForm(true)}>
                 Ajouter une catégorie
               </Button>

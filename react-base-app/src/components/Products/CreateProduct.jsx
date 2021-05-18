@@ -9,7 +9,7 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-const CreateCategory = ({ submit }) => {
+const CreateProduct = ({ submit }) => {
 
   return (
     <Form
@@ -19,25 +19,25 @@ const CreateCategory = ({ submit }) => {
       onFinish={submit}
     >
       <Form.Item
-        label="Libelle"
-        name="Libelle"
-        rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
+        label="Name"
+        name="name"
+        rules={[{ required: true, message: 'Veuillez saisir un nom' }]}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        label="Logo"
-        name="Logo"
-        rules={[{ required: true, message: 'Veuillez saisir un Logo' }]}
+        label="Brand"
+        name="brand"
+        rules={[{ required: true, message: 'Veuillez saisir un brand' }]}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        label="Version"
-        name="Version"
-        rules={[{ required: true, message: 'Veuillez saisir une version' }]}
+        label="Price"
+        name="price"
+        rules={[{ required: true, message: 'Veuillez saisir un prix' }]}
       >
         <Input type={'number'}/>
       </Form.Item>
@@ -51,4 +51,4 @@ const CreateCategory = ({ submit }) => {
   )
 }
 
-export default CreateCategory;
+export default CreateProduct;
