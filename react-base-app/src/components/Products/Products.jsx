@@ -98,7 +98,7 @@ const Products = () => {
       message.success("Ajout d'un nouveau produit")
       productService.create({
         name : e.name,
-        price: e.price,
+        price: parseFloat(e.price),
         brand : e.brand
       }).then(res => {
         const newProduct = {
@@ -117,7 +117,7 @@ const Products = () => {
       productService.update(data.id, {
         name : data.name,
         brand: data.brand,
-        price : data.price
+        price : parseFloat(data.price)
       }).then(res => {
         let newProducts = [...products]
         newProducts = newProducts.filter(product => product.id !== data.id);
