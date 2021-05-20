@@ -15,6 +15,7 @@ const UpdateProduct = ({ submit, product }) => {
     <Form
       {...layout}
       name="basic"
+      key={id}
       initialValues={{ remember: true }}
       onFinish={submit}
     >

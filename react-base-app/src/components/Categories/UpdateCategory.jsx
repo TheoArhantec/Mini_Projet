@@ -15,6 +15,7 @@ const UpdateCategory = ({ submit, category }) => {
     <Form
       {...layout}
       name="basic"
+      key={id}
       initialValues={{ remember: true }}
       onFinish={submit}
     >
