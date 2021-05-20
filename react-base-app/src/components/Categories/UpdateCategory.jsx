@@ -29,9 +29,28 @@ const UpdateCategory = ({ submit, category }) => {
       <Form.Item
         label="Libelle"
         name="Libelle"
+        initialValue={category.name}
         rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
       >
-        <Input placeholder={id} />
+        <Input placeholder={category.name} />
+      </Form.Item>
+
+      <Form.Item
+        label="Logo"
+        name="Logo"
+        initialValue={category.logo}
+        rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
+      >
+        <Input placeholder={category.logo} />
+      </Form.Item>
+
+      <Form.Item
+        label="Version"
+        name="Version"
+        initialValue={category.version}
+        rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
+      >
+        <Input type={'number'} placeholder={category.version} />
       </Form.Item>
 
       <Form.Item {...tailLayout}>
