@@ -4,7 +4,8 @@ import {
   Table,
   Modal,
   Popconfirm,
-  message
+  message,
+  Tag
 } from 'antd';
 import style from './Categories.scss'
 import categoryService from '../../Services/Category'
@@ -66,7 +67,10 @@ const Categories = () => {
     {
       title : 'Color',
       dataIndex: 'color',
-      key: 'color'
+      key: 'color',
+      render: color => (
+        <Tag color={color} style={{boxShadow:"2px 2px 2px #9E9E9E"}}>{color}</Tag>
+      )
     },
   {
     title: 'Action',
