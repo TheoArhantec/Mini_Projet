@@ -42,6 +42,14 @@ const CreateCategory = ({ submit }) => {
         <Input type={'number'}/>
       </Form.Item>
 
+      <Form.Item
+        label="Color"
+        name="color"
+        rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
+      >
+        <Input />
+      </Form.Item>
+
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
           Submit

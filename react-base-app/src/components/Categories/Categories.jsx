@@ -21,7 +21,8 @@ const Categories = () => {
     id: 'Mike',
     name: 'hello',
     logo: '10 Downing Street',
-    version : 10
+    version : 10,
+    color: '#FFF'
   }])
 
   useEffect(() => {
@@ -32,8 +33,9 @@ const Categories = () => {
           key: key,
           id: category._id,
           name: category.name,
-          logo: 'todo',
-          version : 'todo'
+          logo: category.logo,
+          version : category.version,
+          color: category.color
         }
       }))
     })
@@ -60,6 +62,11 @@ const Categories = () => {
       title : 'Version',
       dataIndex: 'version',
       key: 'version'
+    },
+    {
+      title : 'Color',
+      dataIndex: 'color',
+      key: 'color'
     },
   {
     title: 'Action',
@@ -100,13 +107,47 @@ const openUpdateForm = (record) => {
 
   const submitCategory = (object) => {
     console.log(object);
-    message.success("Ajout d'une nouvelle catégorie")
+    message.success("Ajout d'une nouvelle catégorie");
+    categoryService.create({
+      name: object.name,
+      logo: object.logo,
+      version: parseFloat(object.version),
+      color: object.color
+    }).then(res => {
+      const newCategory = {
+        id: res._id,
+        name: res.name,
+        logo: res.logo,
+        version: res.version,
+        color: res.color
+      }
+      setCategories([...categories, newCategory])
+    })
     setDisplayCreateForm(false)
   }
 
   const updateCategory = (data) => {
-  message.success("Catégorie mis à jour")
     console.log(data)
+    categoryService.update(data.id, {
+      name: data.name,
+      logo: data.logo,
+      version: parseFloat(data.version),
+      color: data.color
+    }).then(res => {
+      let newCategories = [...categories]
+      newCategories = newCategories.filter(category => category.id !== data.id);
+      newCategories.push({
+        id: res._id,
+        name: res.name,
+        logo: res.logo,
+        version: res.version,
+        color: res.color
+      })
+      setCategories(newCategories);
+    })
+    message.success("Catégorie mis à jour")
+    setUpdatedCategory({})
+    setDisplayUpdateForm(false)
   }
 
     return (

@@ -30,7 +30,7 @@ const Products = () => {
             key : key,
             id: product._id,
             name: product.name,
-            brand: 'todo',
+            brand: product.brand,
             price : product.price
           }
         }))
@@ -99,7 +99,7 @@ const Products = () => {
       productService.create({
         name : e.name,
         price: e.price,
-        brand : 'todo'
+        brand : e.brand
       }).then(res => {
         const newProduct = {
           id : res._id,

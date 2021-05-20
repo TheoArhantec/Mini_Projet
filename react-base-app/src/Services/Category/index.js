@@ -8,8 +8,8 @@ const getAll = async () => {
 }
 
 const update = async (id, product) => {
-  const request = await axios.post(`${baseURL}/${id}`, product)
-  return request.then(response => response.data);
+  const response = await axios.put(`${baseURL}/${id}`, product)
+  return response.data;
 }
 
 const deleteItem = async (id) => {

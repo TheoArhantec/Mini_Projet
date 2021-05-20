@@ -28,7 +28,7 @@ const UpdateCategory = ({ submit, category }) => {
 
       <Form.Item
         label="Libelle"
-        name="Libelle"
+        name="name"
         initialValue={category.name}
         rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
       >
@@ -37,7 +37,7 @@ const UpdateCategory = ({ submit, category }) => {
 
       <Form.Item
         label="Logo"
-        name="Logo"
+        name="logo"
         initialValue={category.logo}
         rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
       >
@@ -46,11 +46,20 @@ const UpdateCategory = ({ submit, category }) => {
 
       <Form.Item
         label="Version"
-        name="Version"
+        name="version"
         initialValue={category.version}
         rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
       >
         <Input type={'number'} placeholder={category.version} />
+      </Form.Item>
+
+      <Form.Item
+        label="Color"
+        name="color"
+        initialValue={category.color}
+        rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
+      >
+        <Input placeholder={category.color} />
       </Form.Item>
 
       <Form.Item {...tailLayout}>
