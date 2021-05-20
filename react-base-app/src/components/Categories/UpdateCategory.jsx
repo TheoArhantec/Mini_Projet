@@ -59,7 +59,7 @@ const UpdateCategory = ({ submit, category }) => {
         initialValue={category.color}
         rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
       >
-        <Input placeholder={category.color} />
+        <Input type={'color'} placeholder={category.color} />
       </Form.Item>
 
       <Form.Item {...tailLayout}>

@@ -20,7 +20,7 @@ const CreateCategory = ({ submit }) => {
     >
       <Form.Item
         label="Libelle"
-        name="Libelle"
+        name="name"
         rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
       >
         <Input />
@@ -28,7 +28,7 @@ const CreateCategory = ({ submit }) => {
 
       <Form.Item
         label="Logo"
-        name="Logo"
+        name="logo"
         rules={[{ required: true, message: 'Veuillez saisir un Logo' }]}
       >
         <Input />
@@ -36,7 +36,7 @@ const CreateCategory = ({ submit }) => {
 
       <Form.Item
         label="Version"
-        name="Version"
+        name="version"
         rules={[{ required: true, message: 'Veuillez saisir une version' }]}
       >
         <Input type={'number'}/>
@@ -47,7 +47,7 @@ const CreateCategory = ({ submit }) => {
         name="color"
         rules={[{ required: true, message: 'Veuillez saisir un libelle' }]}
       >
-        <Input />
+        <Input type={'color'} />
       </Form.Item>
 
       <Form.Item {...tailLayout}>
