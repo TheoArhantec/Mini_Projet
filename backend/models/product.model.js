@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 const Categories = require('./category.model.js')
 
-const ProductSchema = mongoose.Schema({
+const ProductSchema = new mongoose.Schema({
     name: String,
     brand: String,
-    price: Number
+    price: Number,
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
+    }
 }, {
     timestamps: true
 });

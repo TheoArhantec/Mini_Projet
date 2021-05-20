@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Select } from 'antd';
 
 const layout = {
   labelCol: { span: 8 },
@@ -9,7 +9,7 @@ const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },
 };
 
-const CreateProduct = ({ submit }) => {
+const CreateProduct = ({ submit, category }) => {
 
   return (
     <Form
@@ -41,6 +41,15 @@ const CreateProduct = ({ submit }) => {
       >
         <Input type={'number'}/>
       </Form.Item>
+
+      <Form.Item label="Category" name="category">
+        <Select>
+          {category.map(cat => (
+              <Select.Option value={cat.id}>{cat.name}</Select.Option>
+          ))}
+        </Select>
+      </Form.Item>
+
 
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">

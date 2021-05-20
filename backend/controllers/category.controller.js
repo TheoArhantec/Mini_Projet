@@ -29,7 +29,8 @@ exports.create = (req, res) => {
         name: req.body.name || "Unnamed Category",
         color: req.body.color,
         logo: req.body.logo,
-        version: req.body.version
+        version: req.body.version,
+        category: req.body.category,
     });
 
     // Save Category in the database
@@ -62,14 +63,14 @@ exports.findOne = (req, res) => {
         if(!category) {
             return res.status(404).send({
                 message: "Category not found with id " + req.params.categoryId
-            });            
+            });
         }
         res.send(category);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
                 message: "Category not found with id " + req.params.categoryId
-            });                
+            });
         }
         return res.status(500).send({
             message: "Error retrieving category with id " + req.params.categoryId
@@ -119,7 +120,7 @@ exports.update = (req, res) => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
                 message: "Category not found with id " + req.params.categoryId
-            });                
+            });
         }
         return res.status(500).send({
             message: "Error updating category with id " + req.params.categoryId
@@ -141,7 +142,7 @@ exports.delete = (req, res) => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
                 message: "Category not found with id " + req.params.categoryId
-            });                
+            });
         }
         return res.status(500).send({
             message: "Could not delete category with id " + req.params.categoryId
