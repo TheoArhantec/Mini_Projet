@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"miniprojet.products"}],"uuid":"36f6e23b8e1f4c3bb1af4d886ffa7434"}
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"miniprojet.products"}],"uuid":"cc0064c962ce4be3bd6e7702dbb5f19f"}
